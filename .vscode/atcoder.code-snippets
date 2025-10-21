@@ -1,14 +1,33 @@
 {
+  "prime_all (sieve)": {
+    "prefix": ["prime_all", "sieve", "primes_up_to"],
+    "description": "Sieve of Eratosthenes: primes <= n",
+    "body": [
+      "std::vector<long long> prime_all(long long n) {",
+      "    std::vector<long long> prime;",
+      "    if (n < 2) return prime;",
+      "    std::vector<char> is_prime(n + 1, true);",
+      "    is_prime[0] = is_prime[1] = false;",
+      "    for (long long i = 2; i * i <= n; ++i) {",
+      "        if (is_prime[i]) {",
+      "            for (long long j = i * i; j <= n; j += i) is_prime[j] = false;",
+      "        }",
+      "    }",
+      "    for (long long i = 2; i <= n; ++i) if (is_prime[i]) prime.push_back(i);",
+      "    return prime;",
+      "}"
+    ]
+  },
   "print_joined": {
     "prefix": ["print_joined"],
     "description": "Print vector elements separated by spaces using a plain for-loop",
     "body": [
       "template<typename T> void print_joined(vector<T> vec){",
-      "    ll n = vec.size();",
+      "    long long n = vec.size();",
       "    if(n<=0) return;",
       "",
       "    cout << vec[0];",
-      "    for (ll i = 1; i < n; ++i) cout << ' ' << vec[i];",
+      "    for (long long i = 1; i < n; ++i) cout << ' ' << vec[i];",
       "    cout << endl;",
       "    return;",
       "}"
@@ -19,7 +38,7 @@
     "description": "Modint struct and helpers",
     "body": [
       "struct mint {",
-      "    ll n;",
+      "    long long n;",
       "    mint(ll a = 0) {n = a % mod;}",
       "    mint& operator+=(mint a) {n += a.n; n %= mod; return *this;}",
       "    mint& operator-=(mint a) {n += mod; n -= a.n; n %= mod; return *this;}",
