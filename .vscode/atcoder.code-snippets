@@ -1,4 +1,19 @@
 {
+  "print_joined": {
+    "prefix": ["print_joined"],
+    "description": "Print vector elements separated by spaces using a plain for-loop",
+    "body": [
+      "template<typename T> void print_joined(vector<T> vec){",
+      "    ll n = vec.size();",
+      "    if(n<=0) return;",
+      "",
+      "    cout << vec[0];",
+      "    for (ll i = 1; i < n; ++i) cout << ' ' << vec[i];",
+      "    cout << endl;",
+      "    return;",
+      "}"
+    ]
+  },
   "modint": {
     "prefix": "modint",
     "description": "Modint struct and helpers",
